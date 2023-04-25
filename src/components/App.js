@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import '../index.css';
 import Header from './Header';
 import Main from './Main';
@@ -16,24 +16,24 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
- 
+
 
   const handleEditProfileClick = () => {
-     setIsEditProfilePopupOpen(true);
-}
+    setIsEditProfilePopupOpen(true);
+  }
 
   const handleAddPlaceClick = () => {
-     setIsAddPlacePopupOpen(true);
-}
+    setIsAddPlacePopupOpen(true);
+  }
 
   const handleEditAvatarClick = () => {
-     setIsEditAvatarPopupOpen(true);
-}
+    setIsEditAvatarPopupOpen(true);
+  }
 
   const handleCardClick = (obj) => {
-      setIsImagePopupOpen(true);
-      setSelectedCard(obj);
-}
+    setIsImagePopupOpen(true);
+    setSelectedCard(obj);
+  }
 
   const closeAllPopups = () => {
     setIsEditProfilePopupOpen(false);
@@ -44,13 +44,13 @@ function App() {
 
   return (
     <div className="App">
-       <div className="page"> 
-        <Header /> 
-        <Main 
-        onEditProfile={handleEditProfileClick}
-        onAddPlace={handleAddPlaceClick}
-        onEditAvatar={handleEditAvatarClick}
-        onCardClick={handleCardClick}
+      <div className="page">
+        <Header />
+        <Main
+          onEditProfile={handleEditProfileClick}
+          onAddPlace={handleAddPlaceClick}
+          onEditAvatar={handleEditAvatarClick}
+          onCardClick={handleCardClick}
         />
         <Footer />
         <EditProfilePopup
@@ -66,21 +66,11 @@ function App() {
           onClose={closeAllPopups}
         />
         <ImagePopup
-         isOpen={isImagePopupOpen}
-         onClose={closeAllPopups}
-         card={selectedCard}
+          isOpen={isImagePopupOpen}
+          onClose={closeAllPopups}
+          card={selectedCard}
         />
-    </div> 
-    <div className="popup popup_deleteUserCard">
-        <div className="popup__container popup__close-by-overlay">
-            <button type="button" className="popup__close popup__close_deleteCard"></button>
-            <h2 className="popup__title">Вы уверены?</h2>
-            <form name="deleteCard" className="popup__form popup__form_deleteCard" noValidate>
-              <input type="submit"  value="Да" className="popup__submit-profile-info popup__deleteCard" />
-            </form>
-        </div>  
-    </div>
-    <script type="module"  src="./pages/script.js" defer></script>
+      </div>
     </div>
   );
 }
