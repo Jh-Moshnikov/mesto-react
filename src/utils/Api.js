@@ -14,13 +14,13 @@ class Api {
 
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
-        .then(this._getResponse); //async, который использую в script.js, является надстройкой над промисами, то  можем смешивать код
-       
+            .then(this._getResponse); //async, который использую в script.js, является надстройкой над промисами, то  можем смешивать код
+
     }
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, { headers: this._headers })
-        .then(this._getResponse);
+            .then(this._getResponse);
     }
 
     setUserInfo(user) {
@@ -34,9 +34,9 @@ class Api {
         }).then(this._getResponse)
     }
 
-   
 
-    addNewCard(data)  {
+
+    addNewCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
             method: "POST",
             headers: this._headers,
@@ -75,6 +75,11 @@ class Api {
         }).then(this._getResponse);
     }
 
+    changeLikeCardStatus(obj, variable) {
+        this._status = variable ? this.like(obj._id) : this.deletelike(obj._id);
+        return this._status;
+    }
+
 }
 
 export const api = new Api({
@@ -83,4 +88,4 @@ export const api = new Api({
         authorization: "94497a97-fa39-4775-9861-a6f26f543596",
         "Content-Type": "application/json",
     },
-  })
+})
